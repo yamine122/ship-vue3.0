@@ -5,7 +5,7 @@
     <div class="display">{{current || '0'}}</div>
     <div @click="clear" class="btn">C</div>
     <div class="btn">+/-</div>
-    <div  class="btn">%</div>
+    <div class="btn">%</div>
     <div @click="divide" class="btn operator">÷</div>
     <div @click="append('7')" class="btn">7</div>
     <div @click="append('8')" class="btn">8</div>
