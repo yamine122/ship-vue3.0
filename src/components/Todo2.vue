@@ -7,20 +7,21 @@
         <span @click="addTodo" class="addbutton">추 가</span>
     </div>
     <ul id="todolist">
-        <li @click="doneToggle(v.id)" v-for="(v, i) of todos" :key="v.id" :class="v.clazz" >
+        <li @click="doneToggle(v)" v-for="(v, i) of todos" :key="v.id" :class="v.clazz" >
 			<span>{{i+1}}.</span>
 			<span>{{v.todo}}</span>
-            <span v-if="v.done">(완료)</span>
-			<span  class="done">&#x00D7;</span>
+            <span v-if="v.clazz">(완료)</span>
+			<span @click="deleteTodo(i)" class="done">&#x00D7;</span>
 		</li>
     </ul>
 </div>
 </template>
 
 <script>
-import Nav from "@/components/Nav.vue"
+import Nav from "@/components/cmm/Nav.vue"
+
 export default{
-	name : 'todo',
+	name : 'todo2',
 	components : {
 		Nav
 	},
@@ -41,13 +42,15 @@ export default{
 			this.todos.push({id : this.todos.length+1, todo: this.task, done:false, clazz : ''})
 		
 		},
-		doneToggle(index){
-			const target = this.todos[index-1]
-			target.done = !target.done
-			target.clazz = (target.done)? 'checked' : ''
+		doneToggle(json){
+			if(json.clazz==''){
+                json.clazz='checked'
+            }else{
+                json.clazz=''
+            }
 		},
-		deleteTodo(){
-			
+		deleteTodo(index){
+            this.todos.splice(index, 1)
 		}
 	}
 

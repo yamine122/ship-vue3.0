@@ -17,12 +17,11 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav.vue'
-import Footer from '@/components/Footer.vue'
+import Nav from '@/components/cmm/Nav.vue'
 export default {
 	name: 'Cart',
 	components :{
-		Nav,Footer
+		Nav
 	},
 
 		data() {
